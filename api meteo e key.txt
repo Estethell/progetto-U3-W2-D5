@@ -1,0 +1,5 @@
+Api meteo
+https://openweathermap.org/api
+
+key:
+b582869caedcd3e856eded1b00ec4743
