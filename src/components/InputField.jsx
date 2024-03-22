@@ -1,16 +1,24 @@
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
 const InputField = ({ città, setCittà }) => {
   let cittaCercata = "";
+  const location = useLocation();
+  console.log(location);
   const cittàFetch = (e) => {
     if (e.length < 3) {
       return;
     }
-    const api = "https://api.openweathermap.org/data/2.5/weather?q=" + e + "&appid=b582869caedcd3e856eded1b00ec4743";
-
+    let api = "";
+    if (location.pathname === "/Oggi") {
+      api = "https://api.openweathermap.org/data/2.5/weather?q=" + e + "&appid=b582869caedcd3e856eded1b00ec4743";
+    } else if (location.pathname === "/prossimamente") {
+      api = "https://api.openweathermap.org/data/2.5/forecast?q=" + e + "&appid=b582869caedcd3e856eded1b00ec4743";
+    }
     fetch(api)
       .then((response) => {
+        debugger;
         if (response.ok) {
           return response.json();
         } else {

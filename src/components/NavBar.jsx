@@ -17,14 +17,12 @@ const NavBar = () => {
             />{" "}
           </Navbar.Brand>
           <Nav className="me-auto navBar">
-            <Link to="/" className="navLink mx-3">
-              Home
+            <Link to="/Oggi" className="navLink mx-3">
+              Previsioni di oggi
             </Link>
-            <Link to="/" className="navLink mx-3">
-              Info
-            </Link>
-            <Link to="/" className="navLink mx-3">
-              Ti Senti Fortunato?
+
+            <Link to="/prossimamente" className="navLink mx-3">
+              Meteo per i prossimi giorni
             </Link>
           </Nav>
         </Container>
