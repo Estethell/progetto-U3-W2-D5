@@ -2,19 +2,26 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
-const InputField = ({ città, setCittà }) => {
-  let cittaCercata = "";
+const InputField = ({ città, setCittà, setCittaCercata, cittacercata }) => {
+  const setCitCer = (e) => {
+    debugger;
+    setCittaCercata(e);
+  };
   const location = useLocation();
   console.log(location);
   const cittàFetch = (e) => {
-    if (e.length < 3) {
+    debugger;
+    if (cittacercata.length < 3) {
       return;
     }
     let api = "";
     if (location.pathname === "/Oggi") {
       api = "https://api.openweathermap.org/data/2.5/weather?q=" + e + "&appid=b582869caedcd3e856eded1b00ec4743";
     } else if (location.pathname === "/prossimamente") {
-      api = "https://api.openweathermap.org/data/2.5/forecast?q=" + e + "&appid=b582869caedcd3e856eded1b00ec4743";
+      api =
+        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+        cittacercata +
+        "&appid=b582869caedcd3e856eded1b00ec4743";
     }
     fetch(api)
       .then((response) => {
@@ -42,11 +49,11 @@ const InputField = ({ città, setCittà }) => {
             placeholder="Cerca una città"
             onChange={(e) => {
               console.log(e);
-              return (cittaCercata = e.target.value);
+              return setCitCer(e.target.value);
             }}
           />
         </Form.Group>
-        <Button className="mx-3" onClick={(e) => cittàFetch(cittaCercata)}>
+        <Button className="mx-3" onClick={(e) => cittàFetch(cittacercata)}>
           Cerca
         </Button>
       </Form>

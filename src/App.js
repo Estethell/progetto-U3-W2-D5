@@ -13,13 +13,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [città, setCittà] = useState(null);
+  const [cittacercata, setCittaCercata] = useState(null);
+
   return (
     <BrowserRouter>
       <div>
         <NavBar />
       </div>
       <div>
-        <InputField città={città} setCittà={setCittà} />
+        <InputField città={città} setCittà={setCittà} setCittaCercata={setCittaCercata} cittacercata={cittacercata} />
       </div>
 
       <Routes>
