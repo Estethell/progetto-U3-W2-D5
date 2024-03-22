@@ -3,7 +3,7 @@ import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 
 const Body = ({ città }) => {
-  if (città === null) {
+  if (città === null || città.hasOwnProperty("list")) {
     return (
       <Container className="d-flex justify-content-center text-body-tertiary">
         <h1>Inserisci un nome di città valido</h1>
