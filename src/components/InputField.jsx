@@ -48,7 +48,7 @@ const InputField = ({ setOggi, setPrevisioni }) => {
             }}
           />
         </Form.Group>
-        <Button className="mx-3" onClick={() => cittàFetch()}>
+        <Button className="mx-3 bg-info border-white" onClick={() => cittàFetch()}>
           Cerca
         </Button>
       </Form>

@@ -4,7 +4,7 @@ const Prossimamente = ({ città }) => {
   if (città === null || città.list === undefined) {
     return (
       <Container className="d-flex justify-content-center text-body-tertiary">
-        <h1>Inserisci un nome di città valido</h1>
+        <h1>Non ci sono previsioni disponibili</h1>
       </Container>
     );
   } else {
@@ -21,19 +21,19 @@ const Prossimamente = ({ città }) => {
       <Container>
         {città.list.map((e, i) => {
           return (
-            <Row key={i} className="border-top border-tertiary ">
-              <Col id="1" className="my-3">
-                <div>{newDate(i)}</div>
+            <Row key={i} className="border-top border-tertiary d-flex">
+              <Col id="1" className="my-3 ">
+                <div className="text-center">{newDate(i)}</div>
               </Col>
 
-              <Col id="2" className="my-3">
-                <div>
+              <Col id="2" className="my-3 ">
+                <div className="text-center">
                   <img src={immagine(e.weather[0].icon)} alt="tempo" style={{ width: "70px" }} />
                 </div>
               </Col>
 
-              <Col id="3" className="my-3">
-                <div>
+              <Col id="3" className="my-3 ">
+                <div className="text-center">
                   {" "}
                   <h6 className=" text-body-tertiary me-2 mb-0">
                     {"Massima " + (e.main.temp_max - 273.15).toFixed(1) + "C°"}
@@ -43,9 +43,14 @@ const Prossimamente = ({ città }) => {
                   </h6>
                 </div>
               </Col>
-
-              <Col id="4" className="my-3">
-                <div></div>
+              <Col id="1" className="my-3 ">
+                <div className="text-center">
+                  <h6 className=" text-body-tertiary me-2 mb-0">
+                    {"Umidità: " + (e.main.humidity - 273.15).toFixed(1) + "%"}
+                  </h6>
+                  <h6 className=" text-body-tertiary mx-2 mb-0">{"Velocità Venti: " + e.wind.speed + " nodi"}</h6>
+                  <h6 className=" text-body-tertiary mx-2 mb-0">{"Visibilità: " + e.visibility}</h6>
+                </div>
               </Col>
             </Row>
           );

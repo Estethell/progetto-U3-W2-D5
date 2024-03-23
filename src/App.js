@@ -16,40 +16,6 @@ function App() {
   const [oggi, setOggi] = useState(null);
   const [previsioni, setPrevisioni] = useState(null);
 
-  // const location = useLocation();
-
-  // const cittàFetch = (ricerca) => {
-  //   debugger;
-  //   if (cittacercata.length < 3) {
-  //     return;
-  //   }
-  //   let api = "";
-  //   if (ricerca === "/Oggi") {
-  //     api =
-  //       "https://api.openweathermap.org/data/2.5/weather?q=" + cittacercata + "&appid=b582869caedcd3e856eded1b00ec4743";
-  //   } else if (ricerca === "/prossimamente") {
-  //     api =
-  //       "https://api.openweathermap.org/data/2.5/forecast?q=" +
-  //       cittacercata +
-  //       "&appid=b582869caedcd3e856eded1b00ec4743";
-  //   }
-  //   fetch(api)
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         throw new Error("Errore nello svolgimento della fetch");
-  //       }
-  //     })
-  //     .then((data) => {
-  //       setCittà(data);
-  //       console.log(città);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Errore", error);
-  //     });
-  // };
-
   return (
     <BrowserRouter>
       <div>

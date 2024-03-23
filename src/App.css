@@ -1,9 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
+#root {
+  background-image: linear-gradient(to bottom, #b4eaf6, #94d1ec, #7eb6e2, #7799d3, #7b7bbe);
+  height: 100vh;
+  overflow-y: auto;
+}
+
 .navLink {
   text-decoration: none;
   color: white;
   font-weight: bold;
+}
+
+.navLink:hover {
+  color: rgb(44, 81, 122);
 }
 
 .formInput {
