@@ -13,14 +13,15 @@ const Prossimamente = ({ città }) => {
       return "https://openweathermap.org/img/wn/" + e + "@2x.png";
     };
     const newDate = (i) => {
-      giorno.setDate(giorno.getDate() + i);
+      debugger;
+      giorno.setDate(giorno.getDate() + 1);
       return giorno.toDateString();
     };
     return (
       <Container>
         {città.list.map((e, i) => {
           return (
-            <Row key={e.weather.id} className="border-top border-tertiary ">
+            <Row key={i} className="border-top border-tertiary ">
               <Col id="1" className="my-3">
                 <div>{newDate(i)}</div>
               </Col>

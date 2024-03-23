@@ -11,6 +11,7 @@ const NavBar = () => {
         <Container fluid>
           <Navbar.Brand>
             <img
+              className="rounded-circle"
               src="https://w7.pngwing.com/pngs/546/46/png-transparent-weather-forecasting-severe-weather-storm-weather-free-text-heart-logo-thumbnail.png"
               alt="logo"
               style={{ width: "60px" }}

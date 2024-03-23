@@ -1,8 +1,9 @@
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
+import { useEffect } from "react";
 
-const Body = ({ città }) => {
+const Body = ({ città, fetch }) => {
   if (città === null || città.hasOwnProperty("list")) {
     return (
       <Container className="d-flex justify-content-center text-body-tertiary">

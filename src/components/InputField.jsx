@@ -1,44 +1,39 @@
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
 
-const InputField = ({ città, setCittà, setCittaCercata, cittacercata }) => {
+const InputField = ({ setOggi, setPrevisioni }) => {
+  const apiId = "&appid=b582869caedcd3e856eded1b00ec4743";
+  let cittaCercata = "";
   const setCitCer = (e) => {
-    debugger;
-    setCittaCercata(e);
+    cittaCercata = e;
   };
-  const location = useLocation();
-  console.log(location);
-  const cittàFetch = (e) => {
-    debugger;
-    if (cittacercata.length < 3) {
-      return;
-    }
-    let api = "";
-    if (location.pathname === "/Oggi") {
-      api = "https://api.openweathermap.org/data/2.5/weather?q=" + e + "&appid=b582869caedcd3e856eded1b00ec4743";
-    } else if (location.pathname === "/prossimamente") {
-      api =
-        "https://api.openweathermap.org/data/2.5/forecast?q=" +
-        cittacercata +
-        "&appid=b582869caedcd3e856eded1b00ec4743";
-    }
-    fetch(api)
-      .then((response) => {
-        debugger;
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Errore nello svolgimento della fetch");
-        }
-      })
-      .then((data) => {
-        setCittà(data);
-        console.log(città);
-      })
-      .catch((error) => {
-        console.log("Errore", error);
-      });
+
+  const urlArray = [
+    "https://api.openweathermap.org/data/2.5/weather?q=",
+    "https://api.openweathermap.org/data/2.5/forecast?q=",
+  ];
+
+  const cittàFetch = () => {
+    urlArray.forEach((url, i) => {
+      fetch(url + cittaCercata + apiId)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Errore nello svolgimento della fetch");
+          }
+        })
+        .then((data) => {
+          if (i === 0) {
+            setOggi(data);
+          } else {
+            setPrevisioni(data);
+          }
+        })
+        .catch((error) => {
+          console.log("Errore", error);
+        });
+    });
   };
   return (
     <div>
@@ -53,7 +48,7 @@ const InputField = ({ città, setCittà, setCittaCercata, cittacercata }) => {
             }}
           />
         </Form.Group>
-        <Button className="mx-3" onClick={(e) => cittàFetch(cittacercata)}>
+        <Button className="mx-3" onClick={() => cittàFetch()}>
           Cerca
         </Button>
       </Form>
